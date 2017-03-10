@@ -34,7 +34,7 @@ http://playground.tensorflow.org
 
 ---
 
-### Follow along
+## Follow along
 
 https://git.io/vyVa0
 
