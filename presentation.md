@@ -36,7 +36,7 @@ http://playground.tensorflow.org
 
 ### Follow along
 
-https://git.io/vDg9c
+https://git.io/vyVa0
 
 ---
 
@@ -190,54 +190,13 @@ def train():
     for step in range(training_steps):
         batch = data.next_batch()
         sess.run(train_op, batch)
-        maybe_log_accuracy(step, batch)
+        maybe_log_status(step, batch)
         maybe_save_model()
 
 if __name__ == "__main__":
-    init_flags()
     init_data()
     init_train()
     train()
-```
-
----
-
-### Flags
-
-``` python
-def init_flags():
-    global FLAGS
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--datadir", default="./data")
-    parser.add_argument("--rundir", default="./last-run")
-    parser.add_argument("--epochs", type=int, default=100)
-    FLAGS, _ = parser.parse_known_args()
-```
-
----
-
-## Function defined globals
-
-``` python
-def init_foo():
-    global foo
-    foo = "hello"
-```
-
-<ul>
-<li class="fragment">TensorFlow encourages global-like state
-<li class="fragment">Focused functions separate concerns
-<li class="fragment">Manage state without adding noise
-</ul>
-
----
-
-### Data
-
-``` python
-def init_data():
-    global data
-    data = load_data(FLAGS.datadir)
 ```
 
 ---
@@ -323,12 +282,12 @@ def init_session():
 
 ---
 
-### Logging accuracy
+### Logging status
 
 <div class="compact-code"></div>
 
 ``` python
-def log_accuracy(step, batch):
+def log_status(step, batch):
     accuracy_val, summary = sess.run([accuracy, summaries], batch)
     writer.add_summary(summary, step)
     print "Step %i: accuracy=%f" % accuracy_val
@@ -365,11 +324,10 @@ def train():
     for step in range(training_steps):
         batch = data.next_batch()
         sess.run(train_op, batch)
-        maybe_log_accuracy(step, batch)
+        maybe_log_status(step, batch)
         maybe_save_model()
 
 if __name__ == "__main__":
-    init_flags()
     init_data()
     init_train()
     train()
@@ -399,7 +357,7 @@ https://guild.ai
 
 <ul>
 <li class="fragment">TF is a <strong>low level</strong> library for machine learners
-<li class="fragment"><strong>Frameworks</strong> growing in popularity and support <small>(Keras, TFLearn, TFSlim)</small>
+<li class="fragment"><strong>Frameworks</strong> growing in popularity and support <small>(High level API/TFLearn, Keras, TFSlim)</small>
 <li class="fragment"><strong>Graphs</strong> are central <small>(define model &amp; ops, run, export, serve)</small>
 <li class="fragment">Good <strong>conventions</strong> (patterns) essential for success
 </ul>
