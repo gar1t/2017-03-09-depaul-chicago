@@ -1,6 +1,6 @@
 ### Introduction to Deep Learning with TensorFlow
 
-DePaul University / Chicago / March 9, 2017
+DePaul University, Chicago<br>March 9, 2017
 
 [Garrett Smith](http://gar1t.com) / [@gar1t](https://twitter.com/gar1t)
 
@@ -335,7 +335,7 @@ if __name__ == "__main__":
 
 ---
 
-# Demo
+# In practice
 
 https://guild.ai
 
